@@ -3,100 +3,188 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="比較同一研究帳號的兩筆讀取紀錄，了解如何從存取稽核紀錄查出操作結果與原因。">
+  <meta name="description" content="讀取遭拒之後，審查者需要知道是授權到期、操作超出範圍，還是身分驗證失敗。這一頁延續資料申請案例，示範如何把授權單與事件紀錄串起來，並保護紀錄中可能暴露的資訊。">
   <title>存取稽核紀錄｜智慧醫療資料存取安全</title>
   <link rel="stylesheet" href="../assets/style.css">
-  <style>
-    .audit-log {
-      width: 100%;
-      margin-top: 0.75rem;
-      border-collapse: collapse;
-      font-size: clamp(0.875rem, 2.5vw, 1rem);
-      line-height: 1.5;
-    }
-
-    .audit-log th,
-    .audit-log td {
-      padding: 0.45rem clamp(0.2rem, 1vw, 0.65rem);
-      border-bottom: 1px solid var(--line);
-      text-align: start;
-      vertical-align: top;
-      overflow-wrap: anywhere;
-    }
-
-    .audit-log th {
-      background: var(--tint);
-      color: var(--heading);
-    }
-  </style>
 </head>
 <body>
-  <main>
+  <a class="skip-link" href="#main">跳至主要內容</a>
+  <header class="site-bar">
+    <nav class="container site-nav" aria-label="網站導覽">
+      <a class="site-name" href="../index.html">智慧醫療資料存取安全</a>
+      <a href="../index.html#topics">主題導讀</a>
+    </nav>
+  </header>
+  <main id="main">
     <article>
-      <header class="page-intro">
+      <header class="page-intro article-intro">
         <div class="container">
-          <a class="back-link" href="../index.html"><span aria-hidden="true">←</span> 返回首頁</a>
+          <a class="back-link" href="../index.html">← 返回首頁</a>
           <h1>存取稽核紀錄</h1>
-          <p>比較兩筆讀取紀錄，看看同一個帳號為何一次成功、一次遭拒。</p>
+          <p>讀取遭拒之後，審查者需要知道是授權到期、操作超出範圍，還是身分驗證失敗。這一頁延續資料申請案例，示範如何把授權單與事件紀錄串起來，並保護紀錄中可能暴露的資訊。</p>
         </div>
       </header>
-
-      <div class="container article-content">
-        <section aria-labelledby="concept-title">
-          <h2 id="concept-title">概念說明</h2>
-          <p>稽核紀錄按時間留下系統活動，供事後查詢。在本頁案例中，可用紀錄核對操作者、時間、動作、判定結果及理由。</p>
-        </section>
-
-        <section aria-labelledby="case-title">
-          <h2 id="case-title">模擬情境</h2>
-          <div class="case">
-            <p><strong>虛構案例</strong></p>
-            <p>延續資料存取申請的情境。研究帳號 <code>researcher-01</code> 可在 10 月 1 日 09:00 到 10 月 4 日 09:00 前從指定來源讀取。兩次都使用同一帳號、同一指定來源與同一讀取動作。以下時間均為臺灣時間。</p>
-            <table class="audit-log" aria-label="兩筆讀取稽核紀錄">
-              <thead>
-                <tr>
-                  <th scope="col">時間</th>
-                  <th scope="col">帳號</th>
-                  <th scope="col">操作</th>
-                  <th scope="col">結果</th>
-                  <th scope="col">理由</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>10 月 2 日 10:00</td>
-                  <td><code>researcher-01</code></td>
-                  <td>讀取</td>
-                  <td>允許</td>
-                  <td>符合核准條件</td>
-                </tr>
-                <tr>
-                  <td>10 月 4 日 10:00</td>
-                  <td><code>researcher-01</code></td>
-                  <td>讀取</td>
-                  <td>拒絕</td>
-                  <td>授權已到期</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section aria-labelledby="checklist-title">
-          <h2 id="checklist-title">檢查重點</h2>
-          <ul>
-            <li>成功與遭拒的操作是否各有一筆紀錄。</li>
-            <li>是否能查到操作者、時間與操作類型。</li>
-            <li>是否能從拒絕理由確認授權已到期。</li>
-          </ul>
-        </section>
-
-        <section aria-labelledby="references-title">
-          <h2 id="references-title">參考資料</h2>
-          <ul>
-            <li><a href="https://csrc.nist.gov/glossary/term/audit_log">NIST CSRC Glossary — Audit Log</a></li>
-          </ul>
-        </section>
+      <div class="container article-layout">
+        <nav class="article-nav" aria-label="本文目錄">
+          <h2>本文目錄</h2>
+          <ul><li><a href="#concept">概念說明</a></li><li><a href="#scenario">模擬情境</a></li><li><a href="#checklist">檢查重點</a></li><li><a href="#references">參考資料</a></li></ul>
+        </nav>
+        <div class="article-content">
+<section id="concept" aria-labelledby="concept-title">
+<h2 id="concept-title">概念說明</h2>
+<h3 id="記下足以重建事件的欄位">記下足以重建事件的欄位</h3>
+<p>稽核紀錄應能回答<strong>何時、誰、從哪裡、對什麼做了什麼、結果為何</strong>。規劃時先列出要記的事件，例如權限核准、修改、撤銷、成功讀取、拒絕存取與匯出。事件從身分服務、應用程式及資料層取得時，可用請求識別碼或授權單識別碼串接。〔1、2〕</p>
+<div class="table-scroll" role="region" aria-label="對照表" tabindex="0">
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">欄位群組</th>
+<th scope="col">實務用途</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>時間與來源</td>
+<td>記錄事件時間、時區和產生事件的服務。跨系統比對時可用 UTC
+儲存並同步時鐘，再依查詢介面轉換顯示。</td>
+</tr>
+<tr class="even">
+<td>操作者與目標</td>
+<td>用可追溯的帳號或服務識別碼記錄操作主體，以資料集或資源識別碼定位目標。來源網路資訊依需要記錄，並限制查閱。</td>
+</tr>
+<tr class="odd">
+<td>操作、結果與理由</td>
+<td>區分核准、讀取、匯出與撤銷，記錄允許或拒絕及可判讀的原因代碼。</td>
+</tr>
+<tr class="even">
+<td>關聯識別碼</td>
+<td>例如用 <code>grant-017</code>
+找核准條件，再用請求識別碼對照身分服務與資料層的事件。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="保護日誌與安排查核">保護日誌與安排查核</h3>
+<ul>
+<li><strong>控制內容。</strong>
+一般稽核日誌記錄必要的事件中繼資料，將病歷正文、完整提示詞與模型輸出排除在外。密碼、金鑰及原始存取權杖不得寫入這類日誌。</li>
+<li><strong>限制操作。</strong>
+將事件集中傳送到受控的日誌服務。讓應用程式只能寫入，讓授權的稽核人員查閱，並記錄對日誌的存取。對高風險系統，可採防竄改或僅附加儲存。</li>
+<li><strong>追蹤異常與保存。</strong>
+監看日誌收集失敗、非預期匯出或連續拒絕，為告警設定處理人與查核流程。保存期限依適用法規、契約、組織政策及調查需求訂定，並確認保存期內能查詢或還原。〔1、2〕</li>
+</ul>
+<p>若醫療系統需要交換稽核事件，可參考 HL7 FHIR R4 的
+<code>AuditEvent</code>，其中有時間、參與者、來源、資源及結果等結構。下方是教學用摘要表，實際整合時須依採用的
+FHIR 版本及實作指引映射欄位。〔3〕</p>
+</section>
+<section id="scenario" aria-labelledby="scenario-title">
+<h2 id="scenario-title">模擬情境</h2>
+<p><strong>虛構案例</strong></p>
+<p>以授權單 <code>grant-017</code> 查詢合成資料集
+<code>demo-summary</code> 的事件。核准條件為 <code>researcher-01</code>
+在核准來源上讀取，授權從 10 月 1 日 09:00 起，到 10 月 4 日 09:00
+前有效。下表時間均為 2026 年的臺灣時間。</p>
+<div class="table-scroll" role="region" aria-label="對照表" tabindex="0">
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th scope="col">時間</th>
+<th scope="col">帳號與動作</th>
+<th scope="col">判定</th>
+<th scope="col">理由</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10 月 1 日 08:45</td>
+<td><code>reviewer-01</code> 核准申請</td>
+<td>已核准</td>
+<td>指定人員、資料範圍與有效期間</td>
+</tr>
+<tr class="even">
+<td>10 月 1 日 09:00</td>
+<td><code>admin-01</code> 啟用授權</td>
+<td>已生效</td>
+<td>依審核結果開啟唯讀權限</td>
+</tr>
+<tr class="odd">
+<td>10 月 2 日 10:00</td>
+<td><code>researcher-01</code> 讀取</td>
+<td>允許</td>
+<td>帳號、時間、來源與操作均符合條件</td>
+</tr>
+<tr class="even">
+<td>10 月 2 日 10:02</td>
+<td><code>researcher-01</code> 匯出</td>
+<td>拒絕</td>
+<td>匯出超出核准範圍</td>
+</tr>
+<tr class="odd">
+<td>10 月 4 日 10:00</td>
+<td><code>researcher-01</code> 讀取</td>
+<td>拒絕</td>
+<td>授權已到期</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>查核時，先用授權單對照起訖時間與允許的操作，再看同一請求在應用程式及資料層的紀錄。一次匯出遭拒表示系統記下了超出範圍的嘗試。若要判斷是否有實際資料外流，還要查同一期間有無匯出成功事件、資料傳輸和其他相關證據。</p>
+<h3 id="用欄位串起調查線索">用欄位串起調查線索</h3>
+<p>以匯出遭拒為例，應用程式可用這樣的格式記下必要資訊。授權單識別碼用來找審核條件，請求識別碼用來比對同一次操作在不同元件的紀錄。</p>
+<pre class="json"><code>{
+  &quot;occurred_at&quot;: &quot;2026-10-02T10:02:00+08:00&quot;,
+  &quot;actor_id&quot;: &quot;researcher-01&quot;,
+  &quot;resource_id&quot;: &quot;demo-summary&quot;,
+  &quot;action&quot;: &quot;export&quot;,
+  &quot;outcome&quot;: &quot;deny&quot;,
+  &quot;reason&quot;: &quot;ACTION_NOT_GRANTED&quot;,
+  &quot;source&quot;: &quot;research-portal&quot;,
+  &quot;grant_id&quot;: &quot;grant-017&quot;,
+  &quot;request_id&quot;: &quot;req-103&quot;
+}</code></pre>
+<p><code>source</code>
+在這個例子指產生紀錄的服務。若查核還需要區分核准入口與其他網路來源，可以另設欄位記錄入口識別碼或其他必要的網路資訊。</p>
+</section>
+<section id="checklist" aria-labelledby="checklist-title">
+<h2 id="checklist-title">檢查重點</h2>
+<ul>
+<li><strong>重建事件。</strong>
+能否分別查到核准、成功讀取、匯出遭拒與到期遭拒，並串回同一筆授權？</li>
+<li><strong>保護紀錄。</strong>
+日誌裡是否只留下需要的欄位，並驗證一般研究帳號無法查閱、修改或刪除日誌？</li>
+<li><strong>測試可查性。</strong>
+用一組預期結果已知的請求檢查日誌內容與時間順序，再模擬收集失敗確認告警能送達負責人。</li>
+</ul>
+</section>
+<section id="references" aria-labelledby="references-title">
+<h2 id="references-title">參考資料</h2>
+<ol type="1">
+<li><a href="https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final">NIST SP
+800-53 Rev. 5｜安全與隱私控制</a>。參照 AU-2 事件選擇、AU-3
+紀錄內容、AU-5 日誌失敗處置、AU-6 審查、AU-8 時間戳記、AU-9 保護及 AU-11
+保存。</li>
+<li><a
+href="https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html">OWASP
+Logging Cheat
+Sheet｜應用程式日誌設計</a>。參照事件欄位、敏感資料排除、驗證與日誌保護。</li>
+<li><a href="https://hl7.org/fhir/R4/auditevent.html">HL7 FHIR
+R4｜AuditEvent</a>。查閱醫療系統交換稽核事件的資源結構。</li>
+</ol>
+</section>
+          <nav class="related" aria-label="相關主題">
+            <a href="access-review.html">相關主題 · 醫療資料存取申請與審核 <span aria-hidden="true">→</span></a>
+          </nav>
+        </div>
       </div>
     </article>
   </main>
