@@ -3,40 +3,57 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="為醫療資訊相關科系學生整理的醫療資料存取安全主題介紹。">
+  <meta name="description" content="以一個虛構醫療研究案例，理解資料使用審查、最小權限、限時授權與存取稽核。">
   <title>智慧醫療資料存取安全</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <main>
+  <a class="skip-link" href="#main">跳至主要內容</a>
+  <header class="site-bar">
+    <nav class="container site-nav" aria-label="網站導覽">
+      <a class="site-name" href="index.html" aria-current="page">智慧醫療資料存取安全</a>
+      <a href="#topics">主題導讀</a>
+    </nav>
+  </header>
+  <main id="main">
     <header class="page-intro">
-      <div class="container">
-        <h1>智慧醫療資料存取安全</h1>
-        <p>這個網站為醫療資訊相關科系學生介紹醫療資料的存取安全。每篇聚焦一個概念，搭配一則虛構案例與三項檢查重點，說明如何判斷資料的使用權限是否合宜。</p>
+      <div class="container hero-grid">
+        <div>
+          <h1>智慧醫療資料<br class="desktop-break">存取安全</h1>
+          <p class="lede">研究團隊想用生成式 AI 整理病歷摘要，誰能核准資料使用？授權到期後，如何查證系統確實拒絕了讀取？</p>
+          <p>從一個虛構研究案例出發，理解如何審查用途、設定存取條件，以及用稽核紀錄追蹤結果。適合醫療資訊相關科系學生閱讀。</p>
+          <a class="button" href="#topics">查看主題 <span aria-hidden="true">↓</span></a>
+        </div>
+        <aside class="case-overview" aria-labelledby="case-overview-title">
+          <h2 id="case-overview-title">案例流程</h2>
+          <ol class="process">
+            <li><strong>申請</strong><span>確認目的、人員與資料範圍</span></li>
+            <li><strong>授權</strong><span>指定帳號、操作、來源與期限</span></li>
+            <li><strong>稽核</strong><span>用同一筆授權單查核操作結果</span></li>
+          </ol>
+        </aside>
       </div>
     </header>
 
-    <section class="container topics" aria-labelledby="topics-title">
-      <h2 id="topics-title">主題文章</h2>
+    <section id="topics" class="container topics" aria-labelledby="topics-title">
+      <h2 id="topics-title">主題導讀</h2>
       <div class="topic-grid">
         <article class="topic-card">
-          <h3>
-            <a href="pages/access-review.html">
-              醫療資料存取申請與審核 <span aria-hidden="true">→</span>
-            </a>
-          </h3>
-          <p>從研究團隊申請院外讀取的案例，了解審核時如何確認使用人員、資料範圍與授權期限。</p>
+          <h3><a href="pages/access-review.html">醫療資料存取申請與審核 <span aria-hidden="true">↗</span></a></h3>
+          <p>把研究用途轉成系統能執行的條件，掌握個別帳號、最小權限、院外存取和授權撤銷。</p>
+          <p class="card-detail">附核准條件表與四種測試情境</p>
         </article>
         <article class="topic-card">
-          <h3>
-            <a href="pages/audit-logs.html">
-              存取稽核紀錄 <span aria-hidden="true">→</span>
-            </a>
-          </h3>
-          <p>比較同一帳號的兩筆讀取紀錄，了解如何從稽核紀錄查出一次獲准、一次遭拒的原因。</p>
+          <h3><a href="pages/audit-logs.html">存取稽核紀錄 <span aria-hidden="true">↗</span></a></h3>
+          <p>從授權單回查核准、啟用、讀取與拒絕的紀錄，了解日誌應保留哪些欄位，以及如何限制查閱。</p>
+          <p class="card-detail">附欄位設計表與五筆示範事件</p>
         </article>
       </div>
+      <p class="source-note">內容依臺灣《個人資料保護法》第 6 條、NIST、IETF、OWASP 與 HL7 FHIR 資料整理。各篇列有對應的條文或控制項。</p>
     </section>
   </main>
+  <footer class="site-footer">
+    <div class="container"><a href="https://github.com/daniellpd0905-oss/health-data-security">GitHub 專案</a></div>
+  </footer>
 </body>
 </html>
