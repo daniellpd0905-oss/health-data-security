@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="比較同一研究帳號的兩筆讀取紀錄，了解如何從存取稽核紀錄查出操作結果與原因。">
+  <title>存取稽核紀錄｜智慧醫療資料存取安全</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    .audit-log {
+      width: 100%;
+      margin-top: 0.75rem;
+      border-collapse: collapse;
+      font-size: clamp(0.875rem, 2.5vw, 1rem);
+      line-height: 1.5;
+    }
+
+    .audit-log th,
+    .audit-log td {
+      padding: 0.45rem clamp(0.2rem, 1vw, 0.65rem);
+      border-bottom: 1px solid var(--line);
+      text-align: start;
+      vertical-align: top;
+      overflow-wrap: anywhere;
+    }
+
+    .audit-log th {
+      background: var(--tint);
+      color: var(--heading);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <article>
+      <header class="page-intro">
+        <div class="container">
+          <a class="back-link" href="../index.html"><span aria-hidden="true">←</span> 返回首頁</a>
+          <h1>存取稽核紀錄</h1>
+          <p>比較兩筆讀取紀錄，看看同一個帳號為何一次成功、一次遭拒。</p>
+        </div>
+      </header>
+
+      <div class="container article-content">
+        <section aria-labelledby="concept-title">
+          <h2 id="concept-title">概念說明</h2>
+          <p>稽核紀錄按時間留下系統活動，供事後查詢。在本頁案例中，可用紀錄核對操作者、時間、動作、判定結果及理由。</p>
+        </section>
+
+        <section aria-labelledby="case-title">
+          <h2 id="case-title">模擬情境</h2>
+          <div class="case">
+            <p><strong>虛構案例</strong></p>
+            <p>延續資料存取申請的情境。研究帳號 <code>researcher-01</code> 可在 10 月 1 日 09:00 到 10 月 4 日 09:00 前從指定來源讀取。兩次都使用同一帳號、同一指定來源與同一讀取動作。以下時間均為臺灣時間。</p>
+            <table class="audit-log" aria-label="兩筆讀取稽核紀錄">
+              <thead>
+                <tr>
+                  <th scope="col">時間</th>
+                  <th scope="col">帳號</th>
+                  <th scope="col">操作</th>
+                  <th scope="col">結果</th>
+                  <th scope="col">理由</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>10 月 2 日 10:00</td>
+                  <td><code>researcher-01</code></td>
+                  <td>讀取</td>
+                  <td>允許</td>
+                  <td>符合核准條件</td>
+                </tr>
+                <tr>
+                  <td>10 月 4 日 10:00</td>
+                  <td><code>researcher-01</code></td>
+                  <td>讀取</td>
+                  <td>拒絕</td>
+                  <td>授權已到期</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section aria-labelledby="checklist-title">
+          <h2 id="checklist-title">檢查重點</h2>
+          <ul>
+            <li>成功與遭拒的操作是否各有一筆紀錄。</li>
+            <li>是否能查到操作者、時間與操作類型。</li>
+            <li>是否能從拒絕理由確認授權已到期。</li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="references-title">
+          <h2 id="references-title">參考資料</h2>
+          <ul>
+            <li><a href="https://csrc.nist.gov/glossary/term/audit_log">NIST CSRC Glossary — Audit Log</a></li>
+          </ul>
+        </section>
+      </div>
+    </article>
+  </main>
+</body>
+</html>
