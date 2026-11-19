@@ -1,0 +1,34 @@
+<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>W02｜智慧醫療資料存取安全</title><link rel="stylesheet" href="../style.css"><header><nav><a href="../index.html">智慧醫療資料存取安全</a> <a href="../slides.html">教學簡報</a> <a href="../work/flow.html">製作流程</a></nav></header><main><h1 id="身分與權限">身分與權限</h1>
+<h2 id="part1">只改操作，為什麼結果會不同？</h2>
+<p>假設 researcher-01 在有效期間從核准入口處理 demo-summary。保留帳號、環境、時間與資料，只改變請求的動作。</p>
+<table>
+<thead>
+<tr class="header">
+<th>動作</th>
+<th>結果</th>
+<th>判斷理由</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>讀取指定欄位</td>
+<td>允許</td>
+<td>符合這份研究的唯讀授權</td>
+</tr>
+<tr class="even">
+<td>匯出同一批資料</td>
+<td>拒絕</td>
+<td>匯出需另行審查</td>
+</tr>
+</tbody>
+</table>
+<p>依任務限制權限的原則見 <a href="sources/S01.html">S01，AC-6</a>。兩次操作的具體准駁以<a href="../raw/CASE.html">虛構授權單 CASE</a>為依據。</p>
+<h2 id="part2">只改時間，到了整點還能讀嗎？</h2>
+<p>其他條件均符合時，10 月 4 日 08:59 在時限內，09:00 整應拒絕。授權寫的是臺灣時間「09:00 前」。這是練習的預期結果，另有一筆 10:00 的讀取拒絕才是事件時間線所列的紀錄。<a href="../raw/CASE.html">CASE 起訖時間與事件</a></p>
+<p><a href="index.html">回到首頁</a></p>
+<h2 id="part3">連上院內網路就能讀取摘要嗎？</h2>
+<p>單靠連線位置無法決定誰可以讀取摘要。即使兩位研究助理使用同一個院內網路，系統仍要驗證各自的身分與裝置，並判斷誰有權讀取指定資源。<a href="sources/S02.html">S02，NIST SP 800-207，Abstract</a></p>
+<p>在 grant-017 中，可以先查操作者是否為核准帳號，再對照環境、資料欄位、操作和時間。這些具體條件寫在<a href="../raw/CASE.html">案例授權單</a>。</p>
+<h2 id="part4">權杖還有效，可以匯出嗎？</h2>
+<p>假設這枚權杖只允許讀取摘要，請求匯出仍會被拒。先確認有效期，再核對允許的服務、資料與操作。三天是授權單上的研究期間，無法由它推出這枚權杖的有效期。<a href="sources/S03.html">S03，RFC 9700 §2.3</a> · <a href="../raw/CASE.html">CASE</a></p>
+</main></html>

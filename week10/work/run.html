@@ -1,0 +1,91 @@
+<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>run｜智慧醫療資料存取安全</title><link rel="stylesheet" href="../style.css"><header><nav><a href="../index.html">智慧醫療資料存取安全</a> <a href="../slides.html">教學簡報</a> <a href="../work/flow.html">製作流程</a></nav></header><main><h1 id="執行與檢查紀錄">執行與檢查紀錄</h1>
+<table>
+<thead>
+<tr class="header">
+<th>日期</th>
+<th>節點與執行者</th>
+<th>輸入與預期</th>
+<th>實際結果與狀態</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2026-11-19</td>
+<td>需求確認，作者與 AI</td>
+<td>確定首頁及入庫方式</td>
+<td>作者依序選 B、A。決策已反映至規則與<a href="discussion.html">討論紀錄</a>。</td>
+</tr>
+<tr class="even">
+<td>2026-11-19</td>
+<td>原文核對，AI</td>
+<td>查 NIST SP 800-53 Rev. 5 AC-6，確認權限適用對象及範圍</td>
+<td>找到 Control 與 Discussion。已將一般原則與授權單條件分開，詳見<a href="review-S01.html">S01 第一版</a>。</td>
+</tr>
+<tr class="odd">
+<td>2026-11-19</td>
+<td>S01 作者審核</td>
+<td>取得作者對第一版的判定</td>
+<td>待作者回覆，目前正式入庫 0 篇。</td>
+</tr>
+<tr class="even">
+<td>2026-11-19</td>
+<td>S01 作者審核完成</td>
+<td>作者對第一版回覆「通過」</td>
+<td>已建 S01 正式卡，更新 W01、W02 及 Wiki 索引，正式入庫 1／5。</td>
+</tr>
+<tr class="odd">
+<td>2026-11-19</td>
+<td>需求定案</td>
+<td>九題訪談與八項規則澄清後，作者採用建議</td>
+<td>已將六種頁型、語言、引用深度、五項 lint 與案例定位納入規則。</td>
+</tr>
+<tr class="even">
+<td>2026-11-19</td>
+<td>入庫後檢查，AI</td>
+<td>查來源、跨頁時間、引用版本、連結與教學缺口</td>
+<td>AC-6 引用標示 Rev. 5，核准條件引 CASE。到期與唯讀判讀一致。索引、概念、來源的本機連結已檢查。稽核欄位與零信任正式教材待相關來源通過。</td>
+</tr>
+<tr class="odd">
+<td>2026-11-19</td>
+<td>S02 送審，AI</td>
+<td>查 NIST SP 800-207 的官方摘要</td>
+<td>已建立<a href="review-S02.html">S02 第一版</a>，等待作者審核。</td>
+</tr>
+<tr class="even">
+<td>2026-11-19</td>
+<td>S02 作者審核與入庫</td>
+<td>作者回覆「通過」</td>
+<td>已收錄 S02 並更新 W02 及索引，累計 2／5。</td>
+</tr>
+<tr class="odd">
+<td>2026-11-19</td>
+<td>S02 入庫後檢查，AI</td>
+<td>比對 W02、來源卡及 CASE</td>
+<td>網路位置的說法可追至 SP 800-207 摘要，帳號與有效期連回 CASE；原有整點條件一致。索引到來源卡、主題和原文的引用已核對，本機檔案連結已檢查。</td>
+</tr>
+<tr class="even">
+<td>2026-11-19</td>
+<td>S03 原文核對與送審，AI</td>
+<td>RFC 9700 §2.3</td>
+<td><a href="review-S03.html">第一版</a>已就服務、資源及操作的限制提出送審說明，待作者決定。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2026-11-19s03s05-入庫與查詢">2026-11-19｜S03～S05 入庫與查詢</h3>
+<ul>
+<li>作者一次核准三個來源編號。AI 分別核對 RFC 9700 §2.3、OWASP 指定章節與 FHIR R4 欄位表，建立三張來源卡並更新 W02、W03、索引。正式入庫 5／5。</li>
+<li>跨頁檢查時，W03 還留有上一版「將隨對應來源的逐篇審核補充」的過時說明。已改成能追至 S04、S05 的教材段落，並在本輪入庫後即查待辦狀態。核對結果見正式 W03。</li>
+<li>查驗 R4 的 outcome（0..1）與 recorded（1..1），確認 Wiki 將規格的選填條件和教材記下結果的決定分開。</li>
+<li><a href="query.html">三題內容驗收</a>均可在主題頁找到依據，專案內相對 Markdown 連結已檢查。<a href="outline.html">簡報大綱</a>待作者審核。</li>
+</ul>
+<h2 id="part1">2026-11-20｜大綱審核</h2>
+<p>作者回覆「全部通過」。依八頁順序完成逐頁稿及 HTML，第七頁先呈現中文時間線。見<a href="script.html">逐頁稿</a>與<a href="slide-map.html">來源對照</a>。</p>
+<h2 id="part2">2026-11-20｜HTML 實測及反思</h2>
+<ul>
+<li>執行者為 AI。首次連續點擊下一頁時，測試在網址更新後仍讀到前一頁。已在按下翻頁按鈕時同步更新顯示，再跑同一套測試。</li>
+<li>本機 Chromium 以 1280 與 390 像素寬從首頁進入簡報，前進八頁、退回第一頁、檢查首尾按鈕。兩種尺寸均通過，八頁皆無水平溢出。</li>
+<li>兩種尺寸均在第 4、5、8 頁依序選錯、選對，確認回饋；各頁點入第一個 Wiki 段落並用瀏覽器返回，保留原頁。站內 HTML 的相對連結與片段目標另以程式逐一檢查。</li>
+<li>來源版本與教學界線已對照五張正式卡及 CASE，保留三天研究期間、截止整點練習及實際事件時間的區別。公開部署後，仍需無痕開啟兩個網址複驗。</li>
+<li>本輪有紀錄的教材更新與 HTML 翻頁問題各一件，並列。前者將檢查移至來源入庫後，後者把頁碼與可見頁面的核對加入每一次翻頁測試。</li>
+</ul>
+</main></html>

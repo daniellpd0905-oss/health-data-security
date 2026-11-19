@@ -1,0 +1,32 @@
+<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>review-S01｜智慧醫療資料存取安全</title><link rel="stylesheet" href="../style.css"><header><nav><a href="../index.html">智慧醫療資料存取安全</a> <a href="../slides.html">教學簡報</a> <a href="../work/flow.html">製作流程</a></nav></header><main><h1 id="s01-第一版已通過">S01 第一版｜已通過</h1>
+<p>文件為美國國家標準與技術研究院（NIST）SP 800-53 Rev. 5，Security and Privacy Controls for Information Systems and Organizations。</p>
+<table>
+<thead>
+<tr class="header">
+<th>審核項目</th>
+<th>送審內容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>原文位置</td>
+<td>AC-6 Least Privilege 的 Control 與 Discussion，PDF 閱讀器第 63 頁。<a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf#page=63">開啟官方 PDF</a>。</td>
+</tr>
+<tr class="even">
+<td>白話主張</td>
+<td>使用者及代表使用者執行工作的程式，取得的權限應限於完成指定任務所需的範圍。</td>
+</tr>
+<tr class="odd">
+<td>適用界線</td>
+<td>AC-6 支持「依任務限制權限」這項原則。哪個帳號可用、是否可匯出、核准是否為三天，由本案例的授權單決定。<a href="../raw/CASE.html">虛構授權單</a></td>
+</tr>
+<tr class="even">
+<td>預計更新</td>
+<td>在 W01「存取申請與審核」加上如何由研究目的列出必要動作；在 W02「身分與權限」以同一個帳號示範「讀取指定欄位」和「匯出」的判定。兩頁均連回本篇通過後建立的正式來源卡。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="part1">擬用於教材的例句</h2>
+<p>研究任務只需要在核可環境中讀取摘要。依 grant-017，researcher-01 可以讀取 demo-summary 的指定欄位，若要匯出需另行審查。用來判斷「該給多少權限」的原則來自 AC-6，具體核准項目來自 CASE。</p>
+<p>作者回覆「通過」。已建立<a href="../wiki/sources/S01.html">正式來源卡</a>。</p>
+</main></html>

@@ -1,0 +1,14 @@
+<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>S04｜智慧醫療資料存取安全</title><link rel="stylesheet" href="../style.css"><header><nav><a href="../index.html">智慧醫療資料存取安全</a> <a href="../slides.html">教學簡報</a> <a href="../work/flow.html">製作流程</a></nav></header><main><h1 id="s04--owasp-logging-cheat-sheet">S04 ｜ OWASP Logging Cheat Sheet</h1>
+<p>應用程式日誌</p>
+<ul>
+<li>原始文件：<a href="https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html</a></li>
+<li>原文定位：查 Event attributes、Data to exclude 和 Protection。</li>
+<li>用途：這是已查閱原文後撰寫的繁體中文導讀，供你回到原文取材。請在執行 ingest 時另存自己的來源卡與檢查結果。</li>
+</ul>
+<h2 id="part1">原文重點（改寫）</h2>
+<p>設計事件紀錄時要能重建時間、來源、操作者及操作經過。密碼、完整權杖和敏感個資不宜直接進一般日誌。紀錄本身也要限制查閱並保護其完整性。</p>
+<h2 id="part2">適用界線與教學提醒</h2>
+<p>是否已外流，需要結合相關資料傳輸或其他成功事件調查。單筆操作被拒只描述該次請求的結果。</p>
+<h2 id="part3">讀完請回答</h2>
+<p>追查匯出遭拒時，哪些欄位有幫助？會把完整病歷與權杖值留在同一筆日誌嗎？</p>
+</main></html>

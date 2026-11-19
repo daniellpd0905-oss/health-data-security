@@ -1,0 +1,35 @@
+<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CASE｜智慧醫療資料存取安全</title><link rel="stylesheet" href="../style.css"><header><nav><a href="../index.html">智慧醫療資料存取安全</a> <a href="../slides.html">教學簡報</a> <a href="../work/flow.html">製作流程</a></nav></header><main><h1 id="case三天研究授權">CASE｜三天研究授權</h1>
+<p>改編自上週自己的兩篇文章：<a href="https://daniellpd0905-oss.github.io/health-data-security/pages/access-review.html">申請與審核</a> 與 <a href="https://daniellpd0905-oss.github.io/health-data-security/pages/audit-logs.html">存取稽核紀錄</a>。</p>
+<p>這是虛構教材，與五篇外部來源分開編號。研究團隊想利用生成式 AI 整理摘要，原先希望全組使用一把共用金鑰。模擬審核員要求列出操作人員、所需欄位、模型執行位置與資料流向，再將操作範圍寫入授權單。</p>
+<table>
+<thead>
+<tr class="header">
+<th>項目</th>
+<th>核准內容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>授權單與帳號</td>
+<td>grant-017，researcher-01</td>
+</tr>
+<tr class="even">
+<td>資料與操作</td>
+<td>合成資料 demo-summary，僅可讀取指定欄位</td>
+</tr>
+<tr class="odd">
+<td>環境</td>
+<td>核准研究入口、核可環境及個別身分驗證</td>
+</tr>
+<tr class="even">
+<td>起訖</td>
+<td>臺灣時間 2026/10/01 09:00 起，至 2026/10/04 09:00 前</td>
+</tr>
+<tr class="odd">
+<td>另行審查</td>
+<td>匯出、傳送給未核可的外部模型</td>
+</tr>
+</tbody>
+</table>
+<p>10/02 10:00 合規讀取成功。10/02 10:02 同一帳號匯出遭拒，理由為授權只准讀取。10/04 10:00 的讀取也遭拒，理由是授權到期。另設一個邊界測試：10/04 09:00 整已到期，預期拒絕。這個邊界測試與 10:00 的事件各自標明。</p>
+</main></html>

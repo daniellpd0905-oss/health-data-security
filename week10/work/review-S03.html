@@ -1,0 +1,29 @@
+<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>review-S03｜智慧醫療資料存取安全</title><link rel="stylesheet" href="../style.css"><header><nav><a href="../index.html">智慧醫療資料存取安全</a> <a href="../slides.html">教學簡報</a> <a href="../work/flow.html">製作流程</a></nav></header><main><h1 id="s03-第一版作者已通過">S03 第一版｜作者已通過</h1>
+<table>
+<thead>
+<tr class="header">
+<th>審核項目</th>
+<th>送審內容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>原文位置</td>
+<td>網際網路工程任務組（IETF），Best Current Practice for OAuth 2.0 Security，RFC 9700（2025 年 1 月），§2.3 Access Token Privilege Restriction。<a href="https://www.rfc-editor.org/rfc/rfc9700.html#section-2.3">官方原文</a></td>
+</tr>
+<tr class="even">
+<td>白話主張</td>
+<td>存取權杖（access token）是程式向服務提出請求時出示的憑證。權杖權限應限於任務所需，可限制接收服務、資源與操作。服務收到請求時應檢查它是否落在授權範圍內。</td>
+</tr>
+<tr class="odd">
+<td>適用界線</td>
+<td>此節說明權限範圍。grant-017 的三天是研究申請的核准期間。單枚權杖的有效時間需另有設定依據。</td>
+</tr>
+<tr class="even">
+<td>預計更新</td>
+<td>W02 加入「權杖尚未到期，可以拿來匯出嗎？」。教材以假設的唯讀權杖示範，將 S03 技術原則與 CASE 的授權單條件分開。</td>
+</tr>
+</tbody>
+</table>
+<p>例句：假設權杖仍有效，但只允許摘要服務讀取指定資料。用它請求匯出時，摘要服務應拒絕，因為匯出超出允許的操作。</p>
+</main></html>

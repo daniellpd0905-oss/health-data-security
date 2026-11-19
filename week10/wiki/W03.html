@@ -1,0 +1,9 @@
+<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>W03｜智慧醫療資料存取安全</title><link rel="stylesheet" href="../style.css"><header><nav><a href="../index.html">智慧醫療資料存取安全</a> <a href="../slides.html">教學簡報</a> <a href="../work/flow.html">製作流程</a></nav></header><main><h1 id="存取稽核紀錄">存取稽核紀錄</h1>
+<h2 id="part1">10 月 2 日 10:02 發生了什麼？</h2>
+<p>案例記下一次匯出遭拒，理由為當時的授權只准讀取。這一行能支持「該次匯出請求遭拒」；若要判斷有無其他成功匯出或資料傳輸，仍需查閱其他相關證據。<a href="../raw/CASE.html">CASE 事件時間線</a></p>
+<h2 id="part2">查證這筆拒絕，要看哪些資料？</h2>
+<p>先對照時間與時區、操作者、資料集、操作、結果及拒絕理由，再用同次請求的識別碼比對應用程式與資料層的紀錄。判斷是否外流，還要查同一期間的成功匯出與傳輸紀錄。以必要識別碼追蹤事件，一般日誌避免寫入完整權杖、密碼與病歷正文。<a href="sources/S04.html">S04，Event attributes、Data to exclude</a></p>
+<h2 id="part3">醫療系統如何表示時間與結果？</h2>
+<p>醫療資料交換標準 FHIR 的 R4 版本用 AuditEvent 表示稽核事件。recorded 是寫下紀錄的時間，period 描述活動發生的期間，兩者可能不同。outcome 表示結果，R4 基礎規格列為選填。本教材為了比較讀取成功和匯出遭拒，在各筆示例都顯示結果。<a href="sources/S05.html">S05，R4 Structure</a></p>
+<p><a href="index.html">回到首頁</a></p>
+</main></html>

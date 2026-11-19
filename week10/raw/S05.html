@@ -1,0 +1,14 @@
+<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>S05｜智慧醫療資料存取安全</title><link rel="stylesheet" href="../style.css"><header><nav><a href="../index.html">智慧醫療資料存取安全</a> <a href="../slides.html">教學簡報</a> <a href="../work/flow.html">製作流程</a></nav></header><main><h1 id="s05--hl7-fhir-r4-v401">S05 ｜ HL7 FHIR R4 v4.0.1</h1>
+<p>AuditEvent</p>
+<ul>
+<li>原始文件：<a href="https://hl7.org/fhir/R4/auditevent.html">https://hl7.org/fhir/R4/auditevent.html</a></li>
+<li>原文定位：開 Resource Content 的 Structure 表，找 recorded、period、outcome、agent 與 source。Min..Max 表示欄位最低到最高出現次數。</li>
+<li>用途：這是已查閱原文後撰寫的繁體中文導讀，供你回到原文取材。請在執行 ingest 時另存自己的來源卡與檢查結果。</li>
+</ul>
+<h2 id="part1">原文重點（改寫）</h2>
+<p>R4 AuditEvent 用來描述安全稽核事件。recorded 表示記錄該事件的時間（1..1），period 描述活動發生的期間（0..1），outcome 描述事件結果（0..1）。agent 與 source 有助於辨認參與者及紀錄來源。</p>
+<h2 id="part2">適用界線與教學提醒</h2>
+<p>本題自訂的 action=export、outcome=deny 是給初學者看的事件摘要，不能直接當作通過 FHIR 驗證的 JSON。教學上建議記下結果，與標準是否把欄位列為必填是兩個問題。</p>
+<h2 id="part3">讀完請回答</h2>
+<p>本題要求每次記下結果，能據此寫成「FHIR R4 規定 outcome 必填」嗎？</p>
+</main></html>
